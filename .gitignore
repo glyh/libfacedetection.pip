@@ -204,3 +204,4 @@ toolchains
 wheelhouse
 
 .pypirc
+venv/
