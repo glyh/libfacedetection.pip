@@ -1,25 +1,15 @@
-from .yuface import detect as c_detect
+from .yuface import detectRGB as c_detectRGB
 import warnings
 
-
-def detect(img, conf=0.5):
+def detectRGB(w: int, h: int, img: bytes):
     '''
-    @param img: numpy.ndarray, shape=(H, W, 3), dtype=uint8, BGR
-    @param conf_thresh: float, confidence threshold, default=0.5, range=[0.0, 1.0]
+    @param width: int, image width
+    @param height: int, image height
+    @param bytes: bytes, image RGB date in bytes
     
     @return: 
-        confs: numpy.ndarray, shape=(N,), dtype=uint16, confidence 
-        bboxes: numpy.ndarray, shape=(N, 4), dtype=uint16, bounding box (XYWH)
-        landmarks: numpy.ndarray, shape=(N, 10), dtype=uint16, landmarks (XYXYXYXYXY)
+        bboxe_and_confs: list[list[int]], each inner list is of form [x, y, w, h, confidence]
     '''
-    conf_thresh = conf * 100
-    h, w, c = img.shape
     if h > 960 or w > 960:
         warnings.warn(f'Image size ({w}, {h}) is too large, it may cause detection performance degradation.')
-    result = c_detect(img)
-    confs = result[:, 0]
-    mask = confs > conf_thresh
-    result = result[mask]    
-    confs, bboxes, landmarks = result[:, 0], result[:, 1:5], result[:, 5:-1]
-    return confs, bboxes, landmarks
-
+    return c_detectRGB(w, h, img)
