@@ -5,6 +5,7 @@
 A super fast face detector packaged by the [libfacedetection](https://github.com/ShiqiYu/libfacedetection) repository using pybind11.
 ## Change Log
 [2023-5-8] Project init.
+
 [2024-9-27] Drop numpy dependency
 
 ## Quick start
@@ -25,7 +26,7 @@ img = PIL.Image.open('xxx.jpg').convert('RGB')
 ```python
 # img: numpy.ndarray, shape=(H, W, 3), dtype=uint8, BGR
 # conf_thresh: float, confidence threshold, default=0.5, range=[0.0, 0.1]
-from slimeface import detect
+from slimeface import detectRGB
 bbox_confs = detectRGB(img.width, img.height, img.tobytes())
 ```
 3. Deal result
