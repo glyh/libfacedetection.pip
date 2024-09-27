@@ -1,4 +1,4 @@
-import yuface as m
+import slimeface as m
 
 
 def test_main():

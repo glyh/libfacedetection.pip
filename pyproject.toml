@@ -5,46 +5,6 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
-# [project]
-# name = "yuface"
-# version = "2023.5.0"
-# description = "A fast face detector."
-# keywords = ["face detection"]
-# authors = [
-#   { name="Wwupup", email="12032501@mail.sustech.edu.cn" },
-# ]
-# readme = "README.md"
-# requires-python = ">=3.6"
-# license = { file = "LICENSE" }
-# classifiers = [
-#     "Programming Language :: Python",
-#     "Programming Language :: Python :: 3",
-#     "Programming Language :: Python :: 3 :: Only",
-#     "Programming Language :: Python :: 3.6",
-#     "Programming Language :: Python :: 3.7",
-#     "Programming Language :: Python :: 3.8",
-#     "Programming Language :: Python :: 3.9",
-#     "Programming Language :: Python :: 3.10",
-#     "Programming Language :: Python :: 3.11",
-#     "Programming Language :: C++",
-#     "License :: OSI Approved :: BSD License",
-#     "Operating System :: POSIX :: Linux",
-#     "Classifier: Operating System :: Microsoft :: Windows",
-#     "Development Status :: 4 - Beta",
-#     "Topic :: Scientific/Engineering",
-#     "Topic :: Software Development",
-#     "Intended Audience :: Developers",
-# ]
-
-# [project.urls]
-# "Homepage" = "https://github.com/ShiqiYu/libfacedetection.pip"
-# "Bug Tracker" = "https://github.com/ShiqiYu/libfacedetection.pip/issues"
-
-
-# [tool.setuptools]
-# packages = ["yuface"]
-# package-dir = {"" = "src"}
-
 [tool.cibuildwheel]
 build = "*"
 build-frontend = "pip"
@@ -75,20 +35,8 @@ before-build = [
     "pip install delvewheel",
     "if exist build rmdir /s /q build",
 ]
-# repair-wheel-command = [
-#   "delvewheel show -vv {wheel}",  
-#   "delvewheel repair -vv -w {dest_dir} {wheel}"
-# ]
-
 
 [tool.cibuildwheel.linux]
 repair-wheel-command = "auditwheel repair -w {dest_dir} {wheel}"
 archs = ["x86_64", "aarch64"]
 before-build = "rm -rf {project}/build"
-
-# [tool.cibuildwheel.macos]
-# before-build = "rm -rf {project}/build"
-# repair-wheel-command = [
-#   "delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}",
-#   "pip run abi3audit --strict --report {wheel}",
-# ]

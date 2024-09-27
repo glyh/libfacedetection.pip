@@ -1,14 +1,15 @@
-# Yuface
-[![PyPI](https://img.shields.io/pypi/v/yuface.svg)](https://pypi.python.org/pypi/yuface)
+# Slimeface
+[![PyPI](https://img.shields.io/pypi/v/slimeface.svg)](https://pypi.python.org/pypi/slimeface)
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 ## Introduction 
 A super fast face detector packaged by the [libfacedetection](https://github.com/ShiqiYu/libfacedetection) repository using pybind11.
 ## Change Log
 [2023-5-8] Project init.
+[2024-9-27] Drop numpy dependency
 
 ## Quick start
 ```shell
-pip install yuface
+pip install slimeface
 ```
 
 ### Usage
@@ -34,7 +35,7 @@ img = img[:, :, ::-1]                           # convert to BGR
 ```python
 # img: numpy.ndarray, shape=(H, W, 3), dtype=uint8, BGR
 # conf_thresh: float, confidence threshold, default=0.5, range=[0.0, 0.1]
-from yuface import detect
+from slimeface import detect
 confs, bboxes, landmarks = detect(img, conf_thresh=0.5)
 ```
 3. Deal result

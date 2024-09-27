@@ -1,4 +1,4 @@
-from .yuface import detectRGB as c_detectRGB
+from .slimeface import detectRGB as c_detectRGB
 import warnings
 
 def detectRGB(w: int, h: int, img: bytes):

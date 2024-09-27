@@ -63,9 +63,9 @@ elif sys.platform == "win32":
     cmake_args.append('-DENABLE_AVX512=OFF')
     cmake_args.append('-DENABLE_NEON=OFF')
     cmake_args.append('-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE')
-yuface_modules = [
+slimeface_modules = [
     Pybind11Extension(
-        "yuface",
+        "slimeface",
         ["src/main.cpp"],
         **ext_args
         ),
@@ -116,7 +116,7 @@ class CustomBuildExt(build_ext):
         build_submodule(self)
         build_ext.run(self)
         
-        dst = os.path.join(self.build_lib, "yuface")
+        dst = os.path.join(self.build_lib, "slimeface")
         
         # copy dynamic libs
         copylibs(self.library_dirs[-1], dst)
@@ -134,7 +134,7 @@ class CustomBuildExtDev(build_ext):
         build_submodule(self)
         build_ext.run(self)
 
-        dev_folder = os.path.join(os.path.dirname(__file__), "yuface")
+        dev_folder = os.path.join(os.path.dirname(__file__), "slimeface")
 
         # copy dynamic libs
         copylibs(self.library_dirs[-1], dev_folder)
@@ -154,7 +154,7 @@ class CustomInstall(install):
 long_description = io.open("README.md", encoding="utf-8").read()
 
 setup(
-    name="yuface",
+    name="slimeface",
     keywords = ["face detection"],
     version = __version__,
     long_description=long_description,
@@ -164,8 +164,8 @@ setup(
     url="https://github.com/ShiqiYu/libfacedetection.pip",
     description="A face detection library based on libfacedetection",
     license="./LISENCE",
-    packages=["yuface"],
-    package_dir={"yuface": "src/yuface"},
+    packages=["slimeface"],
+    package_dir={"slimeface": "src/slimeface"},
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
@@ -183,7 +183,7 @@ setup(
         "Topic :: Software Development",
         "Intended Audience :: Developers",
     ],
-    ext_modules=yuface_modules, 
+    ext_modules=slimeface_modules, 
     cmdclass={'build_ext': CustomBuildExt,
               'develop': CustomBuildExtDev,
               'install': CustomInstall}

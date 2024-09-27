@@ -47,7 +47,10 @@ detectRGB(int width, int height, const char *input_ptr) {
   return output;
 }
 
-PYBIND11_MODULE(yuface, m) {
-  m.doc() = "A tiny and fast face detector"; // optional module docstring
+PYBIND11_MODULE(slimeface, m) {
+  m.doc() =
+      "A tiny and fast face detector with no numpy dependency"; // optional
+                                                                // module
+                                                                // docstring
   m.def("detectRGB", &detectRGB, "detection function requires RGB bytes");
 }
