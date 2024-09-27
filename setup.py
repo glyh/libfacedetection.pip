@@ -26,7 +26,7 @@ import io
 # __version__ = version
 
 # 2023-5 first release
-__version__ = '2023.9.27'
+__version__ = '2024.9.27'
 
 root_dir = os.path.dirname(os.path.abspath(__file__))
 
